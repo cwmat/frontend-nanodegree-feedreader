@@ -107,6 +107,7 @@ $(function() {
    * Remember, loadFeed() is asynchronous so this test wil require
    * the use of Jasmine's beforeEach and asynchronous done() function.
    */
+  // Assert that at least one entry exists
   it('has at least one entry', function(done) {
     expect($('div.feed a.entry-link article').hasClass('entry')).toBe(true);
     done();
@@ -114,10 +115,49 @@ $(function() {
 
   });
 
-  /* TODO: Write a new test suite named "New Feed Selection"
+  /* Write a new test suite named "New Feed Selection" */
+  describe('New Feed Selection', function() {
+    var load1,
+        load2;
 
-      /* TODO: Write a test that ensures when a new feed is loaded
-       * by the loadFeed function that the content actually changes.
-       * Remember, loadFeed() is asynchronous.
-       */
+    beforeEach(function(done) {
+      loadFeed(0, function() {
+        load1 = $('.entry').text();
+        // done();
+      });
+      loadFeed(1, function() {
+        load2 = $('.entry').text();
+        done();
+      });
+    });
+
+    /* TODO: Write a test that ensures when a new feed is loaded
+     * by the loadFeed function that the content actually changes.
+     * Remember, loadFeed() is asynchronous.
+     */
+    it('content actually changes', function(done) {
+      // var load1,
+      //     load2;
+
+      // load1 = $('.entry').text();
+      //
+      // loadFeed(1, function() {
+      //   load2 = $('.entry').text();
+      // });
+
+      // Assert that the content between the two feed loads are different
+      // var finish = function() {
+      //   expect(load1).not.toBe(load2);
+      //   console.log(load1);
+      //   console.log(load2);
+      // };
+      expect(load1).not.toBe(load2);
+      console.log(load1);
+      console.log(load2);
+
+
+
+      done();
+  });
+});
 }());
