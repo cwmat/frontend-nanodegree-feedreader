@@ -131,31 +131,13 @@ $(function() {
       });
     });
 
-    /* TODO: Write a test that ensures when a new feed is loaded
+    /* Write a test that ensures when a new feed is loaded
      * by the loadFeed function that the content actually changes.
      * Remember, loadFeed() is asynchronous.
      */
     it('content actually changes', function(done) {
-      // var load1,
-      //     load2;
-
-      // load1 = $('.entry').text();
-      //
-      // loadFeed(1, function() {
-      //   load2 = $('.entry').text();
-      // });
-
-      // Assert that the content between the two feed loads are different
-      // var finish = function() {
-      //   expect(load1).not.toBe(load2);
-      //   console.log(load1);
-      //   console.log(load2);
-      // };
+      // Assert that content changes
       expect(load1).not.toBe(load2);
-      console.log(load1);
-      console.log(load2);
-
-
 
       done();
   });
