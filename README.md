@@ -2,7 +2,7 @@
 ## Feed Reader Testing
 
 ### Live URL to the site
-- [cwmat.github.io/udacity-neighborhood-map](http://cwmat.github.io/frontend-nanodegree-feedreader/)
+- [cwmat.github.io/frontend-nanodegree-feedreader](http://cwmat.github.io/frontend-nanodegree-feedreader/)
 
 ### Description
 > In this project you are given a web-based application that reads RSS feeds.
