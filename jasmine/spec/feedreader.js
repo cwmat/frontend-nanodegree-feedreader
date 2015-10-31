@@ -37,7 +37,7 @@ $(function() {
             expect(feed.url).toBeDefined();
 
             // Assert that the URL is not empty
-            expect(feed.url).not.toBe('');
+            expect(feed.url.length).not.toBe(0);
           });
         });
 
@@ -46,13 +46,13 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it('', function() {
+        it('have valid names', function() {
           allFeeds.forEach(function(feed) {
             // Assert that the feed name is defined
             expect(feed.name).toBeDefined();
 
             // Assert that the name is not empty
-            expect(feed.name).not.toBe('');
+            expect(feed.name.length).not.toBe(0);
           });
         });
     });
