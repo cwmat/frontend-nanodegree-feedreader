@@ -84,7 +84,7 @@ $(function() {
       expect($('body').hasClass('menu-hidden')).toBe(true);
 
       // Assert that when menu icon is clicked the first time the menu is visible
-      $('i.icon-list').trigger('click');
+      $('i.icon-list').click();
       expect($('body').hasClass('menu-hidden')).toBe(false);
 
       // Assert that when menu icon is clicked a second time the menu is invisible
@@ -102,33 +102,34 @@ $(function() {
       });
     });
 
-  /* Write a test that ensures when the loadFeed
-   * function is called and completes its work, there is at least
-   * a single .entry element within the .feed container.
-   * Remember, loadFeed() is asynchronous so this test wil require
-   * the use of Jasmine's beforeEach and asynchronous done() function.
-   */
-  // Assert that at least one entry exists
-  it('has at least one entry', function(done) {
-    expect($('div.feed a.entry-link article').hasClass('entry')).toBe(true);
-    done();
-  });
+    /* Write a test that ensures when the loadFeed
+     * function is called and completes its work, there is at least
+     * a single .entry element within the .feed container.
+     * Remember, loadFeed() is asynchronous so this test wil require
+     * the use of Jasmine's beforeEach and asynchronous done() function.
+     */
+    // Assert that at least one entry exists
+    it('has at least one entry', function(done) {
+      expect($('div.feed a.entry-link article').hasClass('entry')).toBe(true);
+      done();
+    });
 
   });
 
   /* Write a new test suite named "New Feed Selection" */
   describe('New Feed Selection', function() {
     var load1,
-        load2;
+      load2;
 
+    // Compare two different feeds
     beforeEach(function(done) {
       loadFeed(0, function() {
-        load1 = $('.entry').text();
-        // done();
-      });
-      loadFeed(1, function() {
-        load2 = $('.entry').text();
-        done();
+        load1 = $('.feed').text();
+        // Call loadFeed again from within the first async call
+        loadFeed(1, function() {
+          load2 = $('.feed').text();
+          done();
+        });
       });
     });
 
@@ -141,6 +142,6 @@ $(function() {
       expect(load1).not.toBe(load2);
 
       done();
+    });
   });
-});
 }());
